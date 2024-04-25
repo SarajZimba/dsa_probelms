@@ -26,29 +26,41 @@
 # print(rotate(nums2, k2))  # Output: [3, 99, -1, -100]
 
 
+# class Solution:
+#     def rotate(self, nums, k):
+#         n= len(nums)
+
+#         k = k % n
+
+#         if k ==0 :
+#             return 0
+        
+#         def reverse(arr, start, end):
+#             while start < end:
+#                 arr[start], arr[end] = arr[end], arr[start]
+
+#                 start += 1
+#                 end -= 1
+            
+#         reverse(nums, 0, n-1)
+#         reverse(nums, k, n-1)
+#         reverse(nums, 0, k-1)
+
+#         return nums
+    
+# solution = Solution()
+# print(solution.rotate([1, 2, 3, 4, 5, 6], 3))
+        
+
 class Solution:
     def rotate(self, nums, k):
-        n= len(nums)
-
+        n = len(nums)
         k = k % n
-
-        if k ==0 :
-            return 0
         
-        def reverse(arr, start, end):
-            while start < end:
-                arr[start], arr[end] = arr[end], arr[start]
-
-                start += 1
-                end -= 1
-            
-        reverse(nums, 0, n-1)
-        reverse(nums, k, n-1)
-        reverse(nums, 0, k-1)
-
+        nums[:] = nums[-k:] + nums[:-k]  # Slice and concatenate
+        
         return nums
     
 solution = Solution()
 print(solution.rotate([1, 2, 3, 4, 5, 6], 3))
-        
 
